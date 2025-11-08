@@ -119,16 +119,29 @@ class CategoryModel extends AdminModel
             self::where('id', $params['id'])->update(['status' => $status]);
         }
 
-        if($option['task'] == 'add-item'){
+        if ($option['task'] == 'add-item') {
+            $folderPath = $this->folderUpload . '/' . $params['name'];
+            $disk = Storage::disk('artiz_storage');
+        
+            // 🧩 Nếu thư mục chưa tồn tại thì tạo và set quyền ngay
+            if (!$disk->exists($folderPath)) {
+                $fullPath = $disk->path($folderPath);
+                mkdir($fullPath, 0775, true); // Tạo thư mục đầy đủ quyền
+                chmod($fullPath, 0775);
+            }
+        
+            // 🖼️ Lưu ảnh
             $pictureProfile = $params['picture_profile'];
             $params['picture_profile'] = Str::random(10) . '.' .  $pictureProfile->clientExtension();
-            $pictureProfile->storeAs($this->folderUpload . '/' . $params['name'], $params['picture_profile'], 'artiz_storage');
-
+            $pictureProfile->storeAs($folderPath, $params['picture_profile'], 'artiz_storage');
+        
+            // 💾 Lưu dữ liệu
             $data = array_diff_key($params, array_flip($this->crudNoAccepted));
-            $data['created_by']    = 'admin';
+            $data['created_by'] = 'admin';
             $data['created'] = date('Y-m-d H:i:s');
             self::insert($data);
         }
+
 
         if($option['task'] == 'edit-item'){
             $item = self::getItem($params, ['task' => 'get-name']);

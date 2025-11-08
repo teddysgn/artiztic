@@ -114,13 +114,13 @@
                                                                                     Chúng tôi rất tiếc khi đơn hàng của bạn đã bị hủy, vui lòng đọc thông tin phía dưới để biết lý do.<br></p>
                                                                                     <p
                                                                                     style="font-family: Arial, Helvetica, sans-serif; color: rgb(0, 0, 0); font-size: 14px; line-height: 165%; margin-top: 0px; margin-bottom: 0px;">
-                                                                                    <strong style="color: #800020">Người hủy:</strong> {{ $cart['cancel_by'] }}<br></p>
+                                                                                    <strong style="color: #968B7E">Người hủy:</strong> {{ $cart['cancel_by'] }}<br></p>
                                                                                     <p
                                                                                     style="font-family: Arial, Helvetica, sans-serif; color: rgb(0, 0, 0); font-size: 14px; line-height: 165%; margin-top: 0px; margin-bottom: 0px;">
-                                                                                    <strong style="color: #800020">Lý do:</strong> {{ $cart['reason_cancel'] }}<br></p>
+                                                                                    <strong style="color: #968B7E">Lý do:</strong> {{ $cart['reason_cancel'] }}<br></p>
                                                                                     <p
                                                                                     style="font-family: Arial, Helvetica, sans-serif; color: rgb(0, 0, 0); font-size: 14px; line-height: 165%; margin-top: 0px; margin-bottom: 0px;">
-                                                                                    <strong style="color: #800020">Ngày hủy:</strong> {{ date('H:i:s d-m-Y', strtotime($cart['cancel_date'])) }}<br></p>
+                                                                                    <strong style="color: #968B7E">Ngày hủy:</strong> {{ date('H:i:s d-m-Y', strtotime($cart['cancel_date'])) }}<br></p>
                                                                                     <p
                                                                                         style="font-family: Arial, Helvetica, sans-serif; color: rgb(0, 0, 0); font-size: 14px; line-height: 165%; margin-top: 0px; margin-bottom: 0px;">
                                                                                         Chi tiết dơn hàng:<br></p>
@@ -327,7 +327,7 @@
                                                                                                                        </p>
                                                                                                                    </td>
                                                                                                                </tr>
-                                                                                                               <tr style="border-top: 1px solid #800020">
+                                                                                                               <tr style="border-top: 1px solid #968B7E">
                                                                                                                    <td width="50%"
                                                                                                                        style="padding: 12px 20px;">
                                                                                                                        <p
@@ -390,21 +390,21 @@
                                                                                                     <tbody>
                                                                                                         <tr>
                                                                                                             <td align="left" bgcolor="#cccccc" style="width:100px;display:flex;justify-content:center;margin:0;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;background-color:#cccccc">
-                                                                                                                <strong style="margin:0;font-family:Inter, sans-serif;line-height:21px;color:#800020;font-size:14px">
+                                                                                                                <strong style="margin:0;font-family:Inter, sans-serif;line-height:21px;color:#968B7E;font-size:14px">
                                                                                                                     Hình ảnh
                                                                                                                 </strong> 
                                                                                                             </td>
                                                                                                             <td style="padding:0;margin:0;width:10px">
                                                                                                             </td>
                                                                                                             <td style="width:300px;display:flex;justify-content:center;">
-                                                                                                                <p style="padding-left:0;padding-right:20px;margin:0;font-family:Inter, sans-serif;line-height:21px;color:#800020;font-size:14px">
+                                                                                                                <p style="padding-left:0;padding-right:20px;margin:0;font-family:Inter, sans-serif;line-height:21px;color:#968B7E;font-size:14px">
                                                                                                                     <strong>Thông tin</strong> 
                                                                                                                     </p>
                                                                                                             </td>
                                                                                                             <td style="padding:0;margin:0;width:10px">
                                                                                                             </td>
                                                                                                             <td style="width:120px;display:flex;justify-content:center;">
-                                                                                                                <p style="padding-left:0;padding-right:20px;margin:0;font-family:Inter, sans-serif;line-height:21px;color:#800020;font-size:14px">
+                                                                                                                <p style="padding-left:0;padding-right:20px;margin:0;font-family:Inter, sans-serif;line-height:21px;color:#968B7E;font-size:14px">
                                                                                                                     <strong>Tộng cộng</strong> 
                                                                                                                 </p>
                                                                                                             </td>
@@ -466,7 +466,7 @@
                                                                                                             </tr>
                                                                                                         </tbody>
                                                                                                     </table>
-                                                                                                <hr style="border-top:1px solid #800020;width:100%;margin-top:10px">
+                                                                                                <hr style="border-top:1px solid #968B7E;width:100%;margin-top:10px">
                                                                                                 @endforeach
                                                                                                 
                                                                                             </td>

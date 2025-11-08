@@ -65,7 +65,7 @@ use Illuminate\Support\Str;
                                     </div>
 
                                     @if($value['discount'] > 0)
-                                        <p data-placement="bottom"  class="btn btn-artiz" data-toggle="tooltip" title="Sale off" style="position: absolute; left: 5px; top: 5px; z-index:100; width: 50px; background-color: #800020; color: white; border-radius: 5px; border-color: #800020; padding: 0">
+                                        <p data-placement="bottom"  class="btn btn-artiz" data-toggle="tooltip" title="Sale off" style="position: absolute; left: 5px; top: 5px; z-index:100; width: 50px; background-color: #968B7E; color: white; border-radius: 5px; border-color: #968B7E; padding: 0">
                                             -{{ $value['discount'] }}%
                                         </p>
                                     @endif
@@ -106,7 +106,7 @@ use Illuminate\Support\Str;
                                                 <span class="currency">đ</span>{{ $discount }}
                                             </p>
                                             <p class="mb-1">
-                                                <del><span class="currency">đ</span>{{ $price }}</del> <span class="btn btn-artiz" style="width: 50px; background-color: #800020; color: white; border-radius: 5px; border-color: #800020; padding: 0; margin-bottom: 5px">-{{ $value['discount'] }}%</span>
+                                                <del><span class="currency">đ</span>{{ $price }}</del> <span class="btn btn-artiz" style="width: 50px; background-color: #968B7E; color: white; border-radius: 5px; border-color: #968B7E; padding: 0; margin-bottom: 5px">-{{ $value['discount'] }}%</span>
                                             </p>
                                         @else
                                             <p class="product-price">
@@ -209,7 +209,7 @@ use Illuminate\Support\Str;
                                                                 if(response.item.discount > 0){
                                                                     html += `<p class="text-primary">` + new Intl.NumberFormat().format(response.item.price * (100 - response.item.discount) / 100) + `<span class="currency">đ</span></p>
                                                                             <del>` + new Intl.NumberFormat().format(response.item.price) + `<span class="currency">đ</span></del>
-                                                                            <span class="btn btn-artiz" style="width: 50px; background-color: #800020; color: white; border-radius: 5px; border-color: #800020; padding: 0; margin-bottom: 5px">-`+response.item.discount+`%</span>`;
+                                                                            <span class="btn btn-artiz" style="width: 50px; background-color: #968B7E; color: white; border-radius: 5px; border-color: #968B7E; padding: 0; margin-bottom: 5px">-`+response.item.discount+`%</span>`;
                                                                 } else {
                                                                     html += new Intl.NumberFormat().format(response.item.price) + `<span class="currency">đ</span>`;
                                                                 }                                        
@@ -360,7 +360,7 @@ use Illuminate\Support\Str;
         }
 
         .filter-new-in li.active {
-            background: #800020;
+            background: #968B7E;
             color: #ffffff;
         }
     </style>

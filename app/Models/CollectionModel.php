@@ -116,41 +116,61 @@ class CollectionModel extends AdminModel
         return $result;
     }
 
-    public function saveItem($params = null, $option = null){
+    public function saveItem($params = null, $option = null)
+    {
         $result = null;
-
-        if($option['task'] == 'change-status'){
+    
+        if ($option['task'] == 'change-status') {
             $status = $params['currentStatus'] == 'active' ? 'inactive' : 'active';
             self::where('id', $params['id'])->update(['status' => $status]);
         }
-
-        if($option['task'] == 'add-item'){
-            $pictureProfile = $params['picture_profile'];
-            $params['picture_profile'] = Str::random(10) . '.' .  $pictureProfile->clientExtension();
-            $pictureProfile->storeAs($this->folderUpload . '/' . $params['name'], $params['picture_profile'], 'artiz_storage');
-
+    
+        if ($option['task'] == 'add-item') {
+            if (!empty($params['picture_profile'])) {
+                $folderPath = $this->folderUpload . '/' . $params['name'];
+                $disk = Storage::disk('artiz_storage');
+    
+                // 🧩 Tạo thư mục nếu chưa tồn tại và đảm bảo có quyền ghi
+                if (!$disk->exists($folderPath)) {
+                    $fullPath = $disk->path($folderPath);
+                    @mkdir($fullPath, 0775, true);
+                    @chmod($fullPath, 0775);
+                }
+    
+                // 🖼️ Lưu hình
+                $pictureProfile = $params['picture_profile'];
+                $params['picture_profile'] = Str::random(10) . '.' . $pictureProfile->clientExtension();
+                $pictureProfile->storeAs($folderPath, $params['picture_profile'], 'artiz_storage');
+            }
+    
+            // 💾 Lưu dữ liệu
             $data = array_diff_key($params, array_flip($this->crudNoAccepted));
-            $data['created_by']    = 'admin';
+            $data['created_by'] = 'admin';
             $data['created'] = date('Y-m-d H:i:s');
             self::insert($data);
         }
-
-        if($option['task'] == 'edit-item'){
+    
+        if ($option['task'] == 'edit-item') {
             $item = self::getItem($params, ['task' => 'get-name']);
-
-            if(!empty($params['picture_profile'])){
-                $params['picture_profile'] = $this->deletePictureAndChangeNameDirectory($params['picture_profile'], $params['hidden_picture_profile'], $item['name']);
+    
+            if (!empty($params['picture_profile'])) {
+                $params['picture_profile'] = $this->deletePictureAndChangeNameDirectory(
+                    $params['picture_profile'],
+                    $params['hidden_picture_profile'],
+                    $item['name']
+                );
             }
-            
+    
             $data = array_diff_key($params, array_flip($this->crudNoAccepted));
-            $data['modified_by']    = 'admin';
+            $data['modified_by'] = 'admin';
             $data['modified'] = date('Y-m-d H:i:s');
-            self::where('id', $params['id'])
-               ->update($data);
+    
+            self::where('id', $params['id'])->update($data);
         }
-
+    
         return $result;
     }
+
 
     public function deleteItem($params = null, $option = null){
         $result = null;

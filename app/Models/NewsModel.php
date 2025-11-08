@@ -95,40 +95,61 @@ class NewsModel extends AdminModel
         return $result;
     }
 
-    public function saveItem($params = null, $option = null){
+    public function saveItem($params = null, $option = null)
+    {
         $result = null;
-
-        if($option['task'] == 'change-status'){
+    
+        // 🌀 1. Đổi trạng thái
+        if ($option['task'] == 'change-status') {
             $status = $params['currentStatus'] == 'active' ? 'inactive' : 'active';
             self::where('id', $params['id'])->update(['status' => $status]);
         }
-
-        if($option['task'] == 'add-item'){
-            $pictureProfile = $params['picture'];
-            $params['picture'] = Str::random(10) . '.' .  $pictureProfile->clientExtension();
-            $pictureProfile->storeAs($this->folderUpload, $params['picture'], 'artiz_storage');
-
+    
+        // 🆕 2. Thêm mới item
+        if ($option['task'] == 'add-item') {
+            if (!empty($params['picture'])) {
+                $folderPath = $this->folderUpload;
+                $disk = Storage::disk('artiz_storage');
+    
+                // 🧩 Tạo thư mục nếu chưa tồn tại, cấp quyền ghi
+                if (!$disk->exists($folderPath)) {
+                    $fullPath = $disk->path($folderPath);
+                    @mkdir($fullPath, 0775, true);
+                    @chmod($fullPath, 0775);
+                }
+    
+                // 🖼️ Lưu file hình
+                $pictureFile = $params['picture'];
+                $params['picture'] = Str::random(10) . '.' . $pictureFile->clientExtension();
+                $pictureFile->storeAs($folderPath, $params['picture'], 'artiz_storage');
+            }
+    
+            // 💾 Ghi dữ liệu DB
             $data = array_diff_key($params, array_flip($this->crudNoAccepted));
-            $data['created_by']    = Auth::user()->fullname;
+            $data['created_by'] = Auth::user()->fullname ?? 'admin';
             $data['created'] = date('Y-m-d H:i:s');
             self::insert($data);
         }
-
-        if($option['task'] == 'edit-item'){
-            if(!empty($params['picture'])){
-                $params['picture'] = $this->deletePictureAndChangeNameDirectory($params['picture'], $params['hidden_picture']);
+    
+        // ✏️ 3. Sửa item
+        if ($option['task'] == 'edit-item') {
+            if (!empty($params['picture'])) {
+                $params['picture'] = $this->deletePictureAndChangeNameDirectory(
+                    $params['picture'],
+                    $params['hidden_picture']
+                );
             }
-
-           
+    
             $data = array_diff_key($params, array_flip($this->crudNoAccepted));
-            $data['modified_by']    = Auth::user()->fullname;
+            $data['modified_by'] = Auth::user()->fullname ?? 'admin';
             $data['modified'] = date('Y-m-d H:i:s');
-            self::where('id', $params['id'])
-               ->update($data);
+    
+            self::where('id', $params['id'])->update($data);
         }
-
+    
         return $result;
     }
+
 
     public function deleteItem($params = null, $option = null){
         $result = null;

@@ -1,8 +1,9 @@
 <?php
 use Illuminate\Support\Number;
 
-$id = $name = $price = $type = $description = $status = '';
+$id = $name = $type = $description = $status = '';
 $category = $collection = $style = $occasion = $care = $composition = '';
+$price = 0;
 $color = $size = [];
 $dataColor = $colorSlb;
 $dataSize = $sizeSlb;

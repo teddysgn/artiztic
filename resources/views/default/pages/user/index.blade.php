@@ -320,7 +320,7 @@
         height: 0.25rem;
     }
     .progress-bar {
-      background: #800020;
+      background: #968B7E;
     }
     </style>
 

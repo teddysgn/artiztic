@@ -84,7 +84,7 @@
                                                                                         <tr>
                                                                                             <td>
                                                                                                 <h1
-                                                                                                    style="font-family: Inter, sans-serif; color: #800020; font-size: 28px; line-height: 125%; font-weight: bold; font-style: normal; text-decoration: none; margin-bottom: 0px; text-align: center;">
+                                                                                                    style="font-family: Inter, sans-serif; color: #968B7E; font-size: 28px; line-height: 125%; font-weight: bold; font-style: normal; text-decoration: none; margin-bottom: 0px; text-align: center;">
                                                                                                     YÊU CẦU HỦY ĐƠN</h1>
                                                                                             </td>
                                                                                         </tr>
@@ -276,21 +276,21 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <td align="left" bgcolor="#cccccc" style="width:100px;display:flex;justify-content:center;margin:0;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;background-color:#cccccc">
-                                                                              <strong style="margin:0;font-family:Inter, sans-serif;line-height:21px;color:#800020;font-size:14px">
+                                                                              <strong style="margin:0;font-family:Inter, sans-serif;line-height:21px;color:#968B7E;font-size:14px">
                                                                                  Hình ảnh
                                                                               </strong> 
                                                                            </td>
                                                                             <td style="padding:0;margin:0;width:10px">
                                                                             </td>
                                                                             <td style="width:300px;display:flex;justify-content:center;">
-                                                                                <p style="padding-left:0;padding-right:20px;margin:0;font-family:Inter, sans-serif;line-height:21px;color:#800020;font-size:14px">
+                                                                                <p style="padding-left:0;padding-right:20px;margin:0;font-family:Inter, sans-serif;line-height:21px;color:#968B7E;font-size:14px">
                                                                                     <strong>Thông tin</strong> 
                                                                                  </p>
                                                                             </td>
                                                                             <td style="padding:0;margin:0;width:10px">
                                                                             </td>
                                                                             <td style="width:120px;display:flex;justify-content:center;">
-                                                                                <p style="padding-left:0;padding-right:20px;margin:0;font-family:Inter, sans-serif;line-height:21px;color:#800020;font-size:14px">
+                                                                                <p style="padding-left:0;padding-right:20px;margin:0;font-family:Inter, sans-serif;line-height:21px;color:#968B7E;font-size:14px">
                                                                                     <strong>Tổng cộng</strong> 
                                                                                  </p>
                                                                             </td>
@@ -352,7 +352,7 @@
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
-                                                                <hr style="border-top:1px solid #800020;width:100%;margin-top:10px">
+                                                                <hr style="border-top:1px solid #968B7E;width:100%;margin-top:10px">
                                                                 @endforeach
                                                                 
                                                             </td>
@@ -775,7 +775,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <table class="m_-7829748236178050867container" width="640" bgcolor="#800020"
+                                <table class="m_-7829748236178050867container" width="640" bgcolor="#968B7E"
                                     align="center" border="0" cellspacing="0" cellpadding="0"
                                     style="width: 640px; min-width: 640px;">
                                     <tbody>
@@ -810,7 +810,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <table class="m_-7829748236178050867container" width="640" bgcolor="#800020"
+                                <table class="m_-7829748236178050867container" width="640" bgcolor="#968B7E"
                                     align="center" border="0" cellspacing="0" cellpadding="0"
                                     style="width: 640px; min-width: 640px;">
                                     <tbody>

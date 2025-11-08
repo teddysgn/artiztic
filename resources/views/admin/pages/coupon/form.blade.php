@@ -55,7 +55,7 @@ if ($item != null) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name">Name (*)</label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="Name"
+                                        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required
                                             value="{{ old('name', $name) }}">
                                         <small class="text-danger" id="error-name">
                                             @if ($errors->has('name'))
@@ -67,7 +67,7 @@ if ($item != null) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="code">Code (*)</label>
-                                        <input type="text" id="code" name="code" class="form-control" placeholder="Code"
+                                        <input type="text" id="code" name="code" class="form-control" placeholder="Code" required
                                             value="{{ old('code', $code) }}">
                                         <small class="text-danger" id="error-code">
                                             @if ($errors->has('code'))
@@ -79,7 +79,7 @@ if ($item != null) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="value">Value (*)</label>
-                                        <input type="number" id="value" name="value" class="form-control" placeholder="Value"
+                                        <input type="number" id="value" name="value" class="form-control" placeholder="Value" required
                                             value="{{ old('value', $value) }}">
                                         <small class="text-danger" id="error-value">
                                             @if ($errors->has('value'))
@@ -91,7 +91,7 @@ if ($item != null) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="maximum">Maximum</label>
-                                        <input type="number" id="maximum" name="maximum" class="form-control" placeholder="Maximum"
+                                        <input type="number" id="maximum" name="maximum" class="form-control" placeholder="Maximum" required
                                             value="{{ old('maximum', $maximum) }}">
                                         <small class="text-danger" id="error-maximum">
                                             @if ($errors->has('maximum'))
@@ -126,7 +126,7 @@ if ($item != null) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="expired">Expired (*)</label>
-                                        <input type="text" id="expired" name="expired" class="form-control" placeholder="YYYY-MM-DD"
+                                        <input type="text" id="expired" name="expired" class="form-control" placeholder="YYYY-MM-DD" required
                                             value="{{ old('expired', $expired) }}">
                                         <small class="text-danger" id="error-expired">
                                             @if ($errors->has('expired'))
@@ -163,7 +163,7 @@ if ($item != null) {
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="name_multiple">Name (*)</label>
-                                                <input type="text" id="value" name="name_multiple" class="form-control" placeholder="Name"
+                                                <input type="text" id="value" name="name_multiple" class="form-control" placeholder="Name" required
                                                     value="{{ old('name_multiple') }}">
                                                 <small class="text-danger" id="error-value-multiple">
                                                     @if ($errors->has('name_multiple'))
@@ -175,7 +175,7 @@ if ($item != null) {
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="quantity_multiple">Quantity (*)</label>
-                                                <input type="number" id="quantity" name="quantity_multiple" class="form-control" placeholder="Quantity" value="{{ old('quantity_multiple') }}">
+                                                <input type="number" id="quantity" name="quantity_multiple" class="form-control" placeholder="Quantity" required value="{{ old('quantity_multiple') }}">
                                                 <small class="text-danger" id="error-quantity-multiple">
                                                     @if ($errors->has('quantity_multiple'))
                                                         {!! $errors->first('quantity_multiple') !!}
@@ -186,7 +186,7 @@ if ($item != null) {
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="value_multiple">Value (*)</label>
-                                                <input type="number" id="value_multiple" name="value_multiple" class="form-control" placeholder="Value"
+                                                <input type="number" id="value_multiple" name="value_multiple" class="form-control" placeholder="Value" required
                                                     value="{{ old('value_multiple') }}">
                                                 <small class="text-danger" id="error-value-multiple">
                                                     @if ($errors->has('value_multiple'))
@@ -198,7 +198,7 @@ if ($item != null) {
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="maximum_multiple">Maximum</label>
-                                                <input type="number" id="maximum_multiple" name="maximum_multiple" class="form-control" placeholder="Maximum"
+                                                <input type="number" id="maximum_multiple" name="maximum_multiple" class="form-control" placeholder="Maximum" required
                                                     value="{{ old('maximum_multiple') }}">
                                                 <small class="text-danger" id="error-maximum-multiple">
                                                     @if ($errors->has('maximum_multiple'))
@@ -225,7 +225,7 @@ if ($item != null) {
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="expired_multiple">Expired (*)</label>
-                                                <input type="text" id="expired_multiple" name="expired_multiple" class="form-control" placeholder="YYYY-MM-DD"
+                                                <input type="text" id="expired_multiple" name="expired_multiple" class="form-control" placeholder="YYYY-MM-DD" required
                                                     value="{{ old('expired_multiple') }}">
                                                 <small class="text-danger" id="error-expired-multiple">
                                                     @if ($errors->has('expired_multiple'))

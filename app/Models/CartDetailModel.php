@@ -112,6 +112,7 @@ class CartDetailModel extends AdminModel
         return $result;
     }
 
+
     public function deleteItem($params = null, $option = null){
         $result = null;
         if($option['task'] = 'delete-item'){

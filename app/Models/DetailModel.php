@@ -7,6 +7,7 @@ use App\Models\AdminModel;
 use App\Models\ColorModel as ColorModel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use DB;
  
 class DetailModel extends AdminModel
@@ -95,57 +96,48 @@ class DetailModel extends AdminModel
         return $result;
     }
 
-    public function saveItem($params = null, $option = null){
+    public function saveItem($params = null, $option = null)
+    {
         $result = null;
-        if($option['task'] == 'add-item'){
-            $colorModel         = new ColorModel();
-            $color              = $colorModel->getItem($params['color'], ['task' => 'get-name']);
-
-            $picture1 = $params['picture1'];
-            $params['picture1'] = Str::random(10) . '.' .  $picture1->clientExtension();
-            $picture1->storeAs($this->folderUpload . '/' . $params['style'] . '/' . $color['name'], $params['picture1'], 'artiz_storage');
-
-            if(!empty($params['picture2'])){
-                $picture2 = $params['picture2'];
-                $params['picture2'] = Str::random(10) . '.' .  $picture2->clientExtension();
-                $picture2->storeAs($this->folderUpload . '/' . $params['style'] . '/' . $color['name'], $params['picture2'], 'artiz_storage');
+    
+        if ($option['task'] == 'add-item') {
+            $colorModel = new ColorModel();
+            $color = $colorModel->getItem($params['color'], ['task' => 'get-name']);
+        
+            $disk = Storage::disk('artiz_storage');
+        
+            $basePath = $this->folderUpload . '/' . $params['style'];
+            $colorPath = $basePath . '/' . $color['name'];
+        
+            // --- Tạo thư mục thủ công với quyền 0755 ---
+            foreach ([$basePath, $colorPath] as $folderPath) {
+                $fullPath = $disk->path($folderPath);
+                if (!File::exists($fullPath)) {
+                    File::makeDirectory($fullPath, 0755, true, true);
+                }
             }
-            
-
-            if(!empty($params['picture3'])){
-                $picture3 = $params['picture3'];
-                $params['picture3'] = Str::random(10) . '.' .  $picture3->clientExtension();
-                $picture3->storeAs($this->folderUpload . '/' . $params['style'] . '/' . $color['name'], $params['picture3'], 'artiz_storage');
+        
+            // --- Lưu ảnh ---
+            $saveImage = function ($pictureField) use (&$params, $colorPath, $disk) {
+                if (!empty($params[$pictureField])) {
+                    $file = $params[$pictureField];
+                    $filename = Str::random(10) . '.' . $file->clientExtension();
+                    $file->storeAs($colorPath, $filename, 'artiz_storage');
+                    $params[$pictureField] = $filename;
+                }
+            };
+        
+            foreach (['picture1','picture2','picture3','picture4','picture5','picture6'] as $pic) {
+                $saveImage($pic);
             }
-            
-
-            if(!empty($params['picture4'])){
-                $picture4 = $params['picture4'];
-                $params['picture4'] = Str::random(10) . '.' .  $picture4->clientExtension();
-                $picture4->storeAs($this->folderUpload . '/' . $params['style'] . '/' . $color['name'], $params['picture4'], 'artiz_storage');
-            }
-            
-
-            if(!empty($params['picture5'])){
-                $picture5 = $params['picture5'];
-                $params['picture5'] = Str::random(10) . '.' .  $picture5->clientExtension();
-                $picture5->storeAs($this->folderUpload . '/' . $params['style'] . '/' . $color['name'], $params['picture5'], 'artiz_storage');
-            }
-            
-
-            if(!empty($params['picture6'])){
-                $picture6 = $params['picture6'];
-                $params['picture6'] = Str::random(10) . '.' .  $picture6->clientExtension();
-                $picture6->storeAs($this->folderUpload . '/' . $params['style'] . '/' . $color['name'], $params['picture6'], 'artiz_storage');
-            }
-            
-
+        
             $data = array_diff_key($params, array_flip($this->crudNoAccepted));
-            $data['created_by']    = 'admin';
+            $data['created_by'] = 'admin';
             $data['created'] = date('Y-m-d H:i:s');
             self::insert($data);
             return DB::getPdo()->lastInsertId();
         }
+
 
         if($option['task'] == 'edit-item'){
             $colorModel         = new ColorModel();

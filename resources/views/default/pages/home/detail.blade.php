@@ -163,7 +163,7 @@ $pictureURL     = $favorite != null ? 'heart-active.png' : 'heart-default.png';
                                     <del class="text-black-50">{{ $price }}<span class="currency">đ</span></del>
                                     
                                     <small>
-                                        <span class="btn btn-artiz" style="width: 50px; background-color: #800020; color: white; border-radius: 5px; border-color: #800020; padding: 0; margin-bottom: 5px">-{{ $discount }}%</span>
+                                        <span class="btn btn-artiz" style="width: 50px; background-color: #968B7E; color: white; border-radius: 5px; border-color: #968B7E; padding: 0; margin-bottom: 5px">-{{ $discount }}%</span>
                                     </small>
                                 @endif
                             </p>
@@ -176,21 +176,21 @@ $pictureURL     = $favorite != null ? 'heart-active.png' : 'heart-default.png';
                                         @php
                                             $star = 1;
                                             while($star <= $avgStarRating){
-                                                echo '<span style="color: #800020">&#9733</span>';
+                                                echo '<span style="color: #968B7E">&#9733</span>';
                                                 $star++;
                                             }
                                             if($countRating['count'] == 1)
-                                                echo '<span style="color: #800020"> ('.$avgRating.'&#9733 - '.$countRating['count'].' Rating)</span>';
+                                                echo '<span style="color: #968B7E"> ('.$avgRating.'&#9733 - '.$countRating['count'].' Rating)</span>';
                                             else 
-                                                echo '<span style="color: #800020"> ('.$avgRating.'&#9733 - '.$countRating['count'].' Ratings)</span>';
+                                                echo '<span style="color: #968B7E"> ('.$avgRating.'&#9733 - '.$countRating['count'].' Ratings)</span>';
                                         @endphp
                                     @else   
-                                        <span style="color: #800020">&#9733</span>
-                                        <span style="color: #800020">&#9733</span>
-                                        <span style="color: #800020">&#9733</span>
-                                        <span style="color: #800020">&#9733</span>
-                                        <span style="color: #800020">&#9733</span>
-                                        <span style="color: #800020"><small>(0 Đánh giá)</small></span>
+                                        <span style="color: #968B7E">&#9733</span>
+                                        <span style="color: #968B7E">&#9733</span>
+                                        <span style="color: #968B7E">&#9733</span>
+                                        <span style="color: #968B7E">&#9733</span>
+                                        <span style="color: #968B7E">&#9733</span>
+                                        <span style="color: #968B7E"><small>(0 Đánh giá)</small></span>
                                     @endif
                                 </div>
                                 <div class="review">
@@ -402,7 +402,7 @@ $pictureURL     = $favorite != null ? 'heart-active.png' : 'heart-default.png';
                             @php
                                 $count = 1;
                                 while($count <= $value['rating']){
-                                    echo '<span class="rating-user" style="color: #800020">&#9733</span>';
+                                    echo '<span class="rating-user" style="color: #968B7E">&#9733</span>';
                                     $count++;
                                 }
                             @endphp
@@ -458,7 +458,7 @@ $pictureURL     = $favorite != null ? 'heart-active.png' : 'heart-default.png';
                                                                         {{ number_format($valueB['price'] * (100 - $valueB['discount']) / 100) }}<span class="currency">đ</span>
                                                                     </p>
                                                                     <p class="mb-1 pl-1">
-                                                                        <del>{{ number_format($valueB['price']) }}<span class="currency">đ</span></del> <span class="btn btn-artiz" style="width: 50px; background-color: #800020; color: white; border-radius: 5px; border-color: #800020; padding: 0; margin-bottom: 5px">-{{ $valueB['discount'] }}%</span>
+                                                                        <del>{{ number_format($valueB['price']) }}<span class="currency">đ</span></del> <span class="btn btn-artiz" style="width: 50px; background-color: #968B7E; color: white; border-radius: 5px; border-color: #968B7E; padding: 0; margin-bottom: 5px">-{{ $valueB['discount'] }}%</span>
                                                                     </p>
                                                                 @else
                                                                     <p class="product-price pl-1">
@@ -520,7 +520,7 @@ $pictureURL     = $favorite != null ? 'heart-active.png' : 'heart-default.png';
                                                                 {{ number_format($value['price'] * (100 - $value['discount']) / 100) }}<span class="currency">đ</span>
                                                             </p>
                                                             <p class="mb-1 pl-1">
-                                                                <del>{{ number_format($value['price']) }}<span class="currency">đ</span></del> <span class="btn btn-artiz" style="width: 50px; background-color: #800020; color: white; border-radius: 5px; border-color: #800020; padding: 0; margin-bottom: 5px">-{{ $value['discount'] }}%</span>
+                                                                <del>{{ number_format($value['price']) }}<span class="currency">đ</span></del> <span class="btn btn-artiz" style="width: 50px; background-color: #968B7E; color: white; border-radius: 5px; border-color: #968B7E; padding: 0; margin-bottom: 5px">-{{ $value['discount'] }}%</span>
                                                             </p>
                                                         @else
                                                             <p class="product-price pl-1">
@@ -585,7 +585,7 @@ $pictureURL     = $favorite != null ? 'heart-active.png' : 'heart-default.png';
                                                                     {{ number_format($value['price'] * (100 - $value['discount']) / 100) }}<span class="currency">đ</span>
                                                                 </p>
                                                                 <p class="mb-1 pl-1">
-                                                                    <del>{{ number_format($value['price']) }}<span class="currency">đ</span></del> <span class="btn btn-artiz" style="width: 50px; background-color: #800020; color: white; border-radius: 5px; border-color: #800020; padding: 0; margin-bottom: 5px">-{{ $value['discount'] }}%</span>
+                                                                    <del>{{ number_format($value['price']) }}<span class="currency">đ</span></del> <span class="btn btn-artiz" style="width: 50px; background-color: #968B7E; color: white; border-radius: 5px; border-color: #968B7E; padding: 0; margin-bottom: 5px">-{{ $value['discount'] }}%</span>
                                                                 </p>
                                                             @else
                                                                 <p class="product-price pl-1">
@@ -649,7 +649,7 @@ $pictureURL     = $favorite != null ? 'heart-active.png' : 'heart-default.png';
                                                                 {{ number_format($value['price'] * (100 - $value['discount']) / 100) }}<span class="currency">đ</span>
                                                             </p>
                                                             <p class="mb-1 pl-1">
-                                                                <del>{{ number_format($value['price']) }}<span class="currency">đ</span></del> <span class="btn btn-artiz" style="width: 50px; background-color: #800020; color: white; border-radius: 5px; border-color: #800020; padding: 0; margin-bottom: 5px">-{{ $value['discount'] }}%</span>
+                                                                <del>{{ number_format($value['price']) }}<span class="currency">đ</span></del> <span class="btn btn-artiz" style="width: 50px; background-color: #968B7E; color: white; border-radius: 5px; border-color: #968B7E; padding: 0; margin-bottom: 5px">-{{ $value['discount'] }}%</span>
                                                             </p>
                                                         @else
                                                             <p class="product-price pl-1">
@@ -1281,12 +1281,12 @@ $pictureURL     = $favorite != null ? 'heart-active.png' : 'heart-default.png';
         }
 
         td:hover {
-            background: #800020;
+            background: #968B7E;
             color: white;
         }
 
         .popup-body li.active {
-            background: #800020;
+            background: #968B7E;
             color: white;
         }
 

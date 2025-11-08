@@ -156,7 +156,7 @@
             content: '';
             width: 30px;
             height: 1px;
-            background: #800020;
+            background: #968B7E;
             position: absolute;
             top: 50%;
             left: 60%;
@@ -165,18 +165,18 @@
         #bar-progress .step .number-container {
             display: inline-block;
             border: solid 1px #000;
-            color: #800020;
+            color: #968B7E;
             border-radius: 50%;
             width: 24px;
             height: 24px;
         }
 
         #bar-progress .step.step-active .number-container {
-            background-color: #800020;
+            background-color: #968B7E;
         }
 
         #bar-progress .step.step-active h5, #bar-progress .step.step-active small {
-            color: #800020;
+            color: #968B7E;
         }
 
         #bar-progress .step .number-container .number {

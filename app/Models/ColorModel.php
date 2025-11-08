@@ -122,17 +122,31 @@ class ColorModel extends AdminModel
             self::where('id', $params['id'])->update(['status' => $status]);
         }
 
-        if($option['task'] == 'add-item'){
-            if(!empty($params['picture'])){
+        if ($option['task'] == 'add-item') {
+            if (!empty($params['picture'])) {
+                $folderPath = $this->folderUpload . '/' . $params['name'];
+                $disk = Storage::disk('artiz_storage');
+        
+                // 🧩 Tạo thư mục nếu chưa có, với quyền ghi đầy đủ
+                if (!$disk->exists($folderPath)) {
+                    $fullPath = $disk->path($folderPath);
+                    @mkdir($fullPath, 0775, true);
+                    @chmod($fullPath, 0775);
+                }
+        
+                // 🖼️ Lưu file hình
                 $picture = $params['picture'];
-                $params['picture'] = Str::random(10) . '.' .  $picture->clientExtension();
-                $picture->storeAs($this->folderUpload . '/' . $params['name'], $params['picture'], 'artiz_storage');
+                $params['picture'] = Str::random(10) . '.' . $picture->clientExtension();
+                $picture->storeAs($folderPath, $params['picture'], 'artiz_storage');
             }
+        
+            // 💾 Lưu dữ liệu vào DB
             $data = array_diff_key($params, array_flip($this->crudNoAccepted));
-            $data['created_by']    = 'admin';
+            $data['created_by'] = 'admin';
             $data['created'] = date('Y-m-d H:i:s');
             self::insert($data);
         }
+
 
         if($option['task'] == 'edit-item'){
             $item = self::getItem($params, ['task' => 'admin-get-name']);

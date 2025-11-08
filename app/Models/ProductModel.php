@@ -6,7 +6,7 @@ use App\Models\ProductModel as MainModel;
 use App\Models\AdminModel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use DB;
+use Illuminate\Support\Facades\DB;
  
 class ProductModel extends AdminModel
 {
@@ -121,7 +121,8 @@ class ProductModel extends AdminModel
                     
                 }
     
-                $query->where('p.name', 'LIKE', "%{$params['key']}%");
+                $query->where('p.name', 'LIKE', "%{$params['key']}%")
+                        ->orWhere('p.style', 'LIKE', "%{$params['key']}%");
                 $result = $query->orderBy('p.name', 'asc')->get()->toArray(); 
             }
         }
@@ -215,7 +216,8 @@ class ProductModel extends AdminModel
 
             // Search
             if($params['key'] != ''){
-                $query->where('p.name', 'LIKE', "%{$params['key']}%");
+                $query->where('p.name', 'LIKE', "%{$params['key']}%")
+                        ->orWhere('p.style', 'LIKE', "%{$params['key']}%");
             }
 
             $result = $query->where('p.status', '=', 'active')
@@ -282,7 +284,8 @@ class ProductModel extends AdminModel
 
             // Search
             if($params['key'] != ''){
-                $query->where('p.name', 'LIKE', "%{$params['key']}%");
+                $query->where('p.name', 'LIKE', "%{$params['key']}%")
+                        ->orWhere('p.style', 'LIKE', "%{$params['key']}%");
             }
 
             // Sort
@@ -363,7 +366,8 @@ class ProductModel extends AdminModel
 
             // Search
             if($params['key'] != ''){
-                $query->where('p.name', 'LIKE', "%{$params['key']}%");
+                $query->where('p.name', 'LIKE', "%{$params['key']}%")
+                        ->orWhere('p.style', 'LIKE', "%{$params['key']}%");
             }
 
             // Sort
@@ -645,43 +649,52 @@ class ProductModel extends AdminModel
 
         if($option['task'] == 'add-item'){
             $params['price'] = str_replace(',', '', $params['price']);
+            $folderPath = $this->folderUpload . '/' . $params['name'];
+            $disk = Storage::disk('artiz_storage');
+            
+            // Nếu chưa có thư mục thì tự tạo + set quyền
+            if (!$disk->exists($folderPath)) {
+                $fullPath = $disk->path($folderPath);
+                mkdir($fullPath, 0775, true); // tự tạo thư mục với quyền đầy đủ
+                chmod($fullPath, 0775);
+            }
             
             $picture1 = $params['picture1'];
             $params['picture1'] = Str::random(10) . '.' .  $picture1->clientExtension();
-            $picture1->storeAs($this->folderUpload . '/' . $params['name'], $params['picture1'], 'artiz_storage');
+            $picture1->storeAs($folderPath, $params['picture1'], 'artiz_storage');
 
             if(!empty($params['picture2'])){
                 $picture2 = $params['picture2'];
                 $params['picture2'] = Str::random(10) . '.' .  $picture2->clientExtension();
-                $picture2->storeAs($this->folderUpload . '/' . $params['name'], $params['picture2'], 'artiz_storage');
+                $picture2->storeAs($folderPath, $params['picture2'], 'artiz_storage');
             }
             
 
             if(!empty($params['picture3'])){
                 $picture3 = $params['picture3'];
                 $params['picture3'] = Str::random(10) . '.' .  $picture3->clientExtension();
-                $picture3->storeAs($this->folderUpload . '/' . $params['name'], $params['picture3'], 'artiz_storage');
+                $picture3->storeAs($folderPath, $params['picture3'], 'artiz_storage');
             }
             
 
             if(!empty($params['picture4'])){
                 $picture4 = $params['picture4'];
                 $params['picture4'] = Str::random(10) . '.' .  $picture4->clientExtension();
-                $picture4->storeAs($this->folderUpload . '/' . $params['name'], $params['picture4'], 'artiz_storage');
+                $picture4->storeAs($folderPath, $params['picture4'], 'artiz_storage');
             }
             
 
             if(!empty($params['picture5'])){
                 $picture5 = $params['picture5'];
                 $params['picture5'] = Str::random(10) . '.' .  $picture5->clientExtension();
-                $picture5->storeAs($this->folderUpload . '/' . $params['name'], $params['picture5'], 'artiz_storage');
+                $picture5->storeAs($folderPath, $params['picture5'], 'artiz_storage');
             }
             
 
             if(!empty($params['picture6'])){
                 $picture6 = $params['picture6'];
                 $params['picture6'] = Str::random(10) . '.' .  $picture6->clientExtension();
-                $picture6->storeAs($this->folderUpload . '/' . $params['name'], $params['picture6'], 'artiz_storage');
+                $picture6->storeAs($folderPath, $params['picture6'], 'artiz_storage');
             }
             
 

@@ -286,7 +286,7 @@
                                   </tbody>
                                </table>
                                <table align="center" border="0" cellpadding="0" cellspacing="0"
-                                  width="100%" bgcolor="#800020">
+                                  width="100%" bgcolor="#968B7E">
                                   <tbody>
                                      <tr>
                                         <td align="center"
@@ -339,7 +339,7 @@
                          <tr>
                             <td>
                                <table align="center" border="0" cellpadding="0" cellspacing="0"
-                                  width="100%" bgcolor="#800020">
+                                  width="100%" bgcolor="#968B7E">
                                   <tbody>
                                      <tr>
                                         <td height="10" width="100%"></td>

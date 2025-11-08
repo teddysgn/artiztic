@@ -298,7 +298,7 @@ class CartController extends Controller
 
         Mail::send('default.pages.mail.admin', compact('params', 'cart'), function($email) use($user){
             $email->subject('ARTIZ - NEW ORDER');
-            $email->to('hoangvu.pcx@gmail.com', 'Administrator');
+            $email->to('nguyenhoangvu.sgn@gmail.com', 'Administrator');
         }, [
             'params' => $params,
             'cart'  => $cart

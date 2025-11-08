@@ -312,7 +312,7 @@
                                                                                                                         </p>
                                                                                                                     </td>
                                                                                                                 </tr>
-                                                                                                                <tr style="border-top: 1px solid #800020">
+                                                                                                                <tr style="border-top: 1px solid #968B7E">
                                                                                                                     <td width="50%"
                                                                                                                         style="padding: 12px 20px;">
                                                                                                                         <p

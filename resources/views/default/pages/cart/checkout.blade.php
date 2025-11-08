@@ -387,7 +387,7 @@
 </script>
 <style>
     input[type=radio] {
-            accent-color: #800020;
+            accent-color: #968B7E;
     }
 
     .popup-content{
@@ -437,8 +437,8 @@
         inset: 20px;
         width: calc(100% - 40px);
         height: 2px;
-        background: #800020;
-        filter: drop-shadow(0 0 20px #800020) drop-shadow(0 0 60px #800020);
+        background: #968B7E;
+        filter: drop-shadow(0 0 20px #968B7E) drop-shadow(0 0 60px #968B7E);
         animation: animateLine 4s ease-in-out infinite;
     }
 

@@ -236,7 +236,7 @@
                                                                 if(response.item.discount > 0){
                                                                     html += `<p class="text-primary">` + new Intl.NumberFormat().format(response.item.price * (100 - response.item.discount) / 100) + `<span class="currency">đ</span></p>
                                                                             <del>` + new Intl.NumberFormat().format(response.item.price) + `<span class="currency">đ</span></del>
-                                                                            <span class="btn btn-artiz" style="width: 50px; background-color: #800020; color: white; border-radius: 5px; border-color: #800020; padding: 0; margin-bottom: 5px">-`+response.item.discount+`%</span>`;
+                                                                            <span class="btn btn-artiz" style="width: 50px; background-color: #968B7E; color: white; border-radius: 5px; border-color: #968B7E; padding: 0; margin-bottom: 5px">-`+response.item.discount+`%</span>`;
                                                                 } else {
                                                                     html += new Intl.NumberFormat().format(response.item.price) + `<span class="currency">đ</span>`;
                                                                 }                                        

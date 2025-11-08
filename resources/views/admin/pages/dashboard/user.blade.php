@@ -182,7 +182,7 @@
                     datasets: [{
                         label: label,
                         barThickness: 25,
-                        backgroundColor: "#800020",
+                        backgroundColor: "#968B7E",
                         data: data
                     }]
                 };
@@ -199,7 +199,7 @@
                     datasets: [{
                         label: label,
                         barThickness: 25,
-                        backgroundColor: "#800020",
+                        backgroundColor: "#968B7E",
                         data: data
                     }]
                 };
@@ -215,7 +215,7 @@
                         elements: {
                             rectangle: {
                                 borderWidth: 1,
-                                borderColor: '#800020)',
+                                borderColor: '#968B7E)',
                                 borderSkipped: 'bottom'
                             }
                         },
@@ -291,8 +291,8 @@
                 labels: date,
                 datasets: [{
                     label: label1,
-                    backgroundColor: "#800020",
-                    borderColor: "#800020",
+                    backgroundColor: "#968B7E",
+                    borderColor: "#968B7E",
                     fill: false,
                     data: data1
                 },{

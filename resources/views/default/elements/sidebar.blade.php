@@ -11,7 +11,7 @@
             <i class="fa fa-close" aria-hidden="true"></i>
         </div>
         <div class="logo">
-            <a href="{{ route('home') }}"><img src="{{ asset('public/default/img/logo/logo.png') }}"
+            <a href="{{ route('home') }}"><img src="{{ asset('public/default/img/logo/logo_black.png') }}"
                     alt=""></a>
         </div>
         <nav class="artiz-nav">

@@ -11,6 +11,7 @@ use Illuminate\Support\Number;
                 <div class="slide"></div>
                 <div class="slide"></div>
                 <div class="slide"></div>
+                <div class="slide"></div>
             </div>
         </div>
         <div>
@@ -22,6 +23,12 @@ use Illuminate\Support\Number;
         
         <div class="artiz-pro-catagory clearfix">
             <!-- Single Catagory -->
+            <?php
+                // echo '<pre>';
+                // print_r($items);
+                // echo '</pre>';
+                // die;
+            ?>
             @foreach ($items as $key => $value)
                 @php
                     $name = $value['name'];
@@ -163,27 +170,32 @@ use Illuminate\Support\Number;
         }
 
         .slide:nth-child(1) {
-            background: url({{ asset('public/default/img/slide/01.webp') }});
+            background: url({{ asset('public/default/img/slide/01.jpg') }});
             background-position: center center;
             background-size: cover;
         }
         .slide:nth-child(2) {
-            background: url({{ asset('public/default/img/slide/02.webp') }});
+            background: url({{ asset('public/default/img/slide/02.jpg') }});
             background-position: center center;
             background-size: cover;
         }
         .slide:nth-child(3) {
-            background: url({{ asset('public/default/img/slide/03.webp') }});
+            background: url({{ asset('public/default/img/slide/03.jpg') }});
             background-position: center center;
             background-size: cover;
         }
         .slide:nth-child(4) {
-            background: url({{ asset('public/default/img/slide/04.webp') }});
+            background: url({{ asset('public/default/img/slide/04.jpg') }});
+            background-position: center center;
+            background-size: cover;
+        }
+        .slide:nth-child(5) {
+            background: url({{ asset('public/default/img/slide/05.jpg') }});
             background-position: center center;
             background-size: cover;
         }
         .slide:hover {
-            flex-grow: 7;
+            flex-grow: 2;
             filter: invert(0);
             box-shadow: 0 0 20px 10px rgb(0, 0, 0, .5);
         }

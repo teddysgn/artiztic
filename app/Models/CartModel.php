@@ -375,33 +375,55 @@ class CartModel extends AdminModel
             ]);
         }
 
-        if($option['task'] == 'add-item'){
+        if ($option['task'] == 'add-item') {
             $userModel = new UserModel();
             $infoUser = $userModel->getItem(Auth::user(), ['task' => 'get-item']);
-            if($infoUser['phone'] == ''){
-                $data['phone'] = $params['phone'];
-                $result = UserModel::where('id', Auth::user()->id)->update($data);
+            $dataUser = [];
+        
+            // 🧩 Cập nhật thông tin người dùng nếu trống
+            if (empty($infoUser['phone']) && !empty($params['phone'])) {
+                $dataUser['phone'] = $params['phone'];
             }
-
-            if($infoUser['address'] == ''){
-                $data['address'] = $params['address'];
-                $result = UserModel::where('id', Auth::user()->id)->update($data);
+        
+            if (empty($infoUser['address']) && !empty($params['address'])) {
+                $dataUser['address'] = $params['address'];
             }
-            
+        
+            if (!empty($dataUser)) {
+                UserModel::where('id', Auth::user()->id)->update($dataUser);
+            }
+        
+            // 🔑 Tạo ID ngẫu nhiên cho item
             $id = Str::random(8);
-            if(!empty($params['invoice'])){
+        
+            // 🧾 Xử lý hóa đơn (invoice)
+            if (!empty($params['invoice'])) {
+                $folderPath = $this->folderUpload . '/' . $id;
+                $disk = Storage::disk('artiz_storage');
+        
+                // 🧱 Tạo thư mục nếu chưa có, set quyền ghi
+                if (!$disk->exists($folderPath)) {
+                    $fullPath = $disk->path($folderPath);
+                    @mkdir($fullPath, 0775, true);
+                    @chmod($fullPath, 0775);
+                }
+        
+                // 📎 Lưu file invoice
                 $invoice = $params['invoice'];
-                $params['invoice'] = Str::random(10) . '.' .  $invoice->clientExtension();
-                $invoice->storeAs($this->folderUpload . '/' . $id, $params['invoice'], 'artiz_storage');
+                $params['invoice'] = Str::random(10) . '.' . $invoice->clientExtension();
+                $invoice->storeAs($folderPath, $params['invoice'], 'artiz_storage');
             }
+        
+            // 💾 Chuẩn bị dữ liệu lưu vào DB
             $data = array_diff_key($params, array_flip($this->crudNoAccepted));
-            $data['id']         = $id;
-            $data['status']     = 'pending';
-
-           
+            $data['id']     = $id;
+            $data['status'] = 'pending';
+        
             self::insert($data);
+        
             return $data['id'];
         }
+
 
         if($option['task'] == 'edit-item'){
             $data['status']         = $params['status'];

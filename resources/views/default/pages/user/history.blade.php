@@ -673,7 +673,7 @@
         }
 
         .filter-new-in li.active {
-            background: #800020;
+            background: #968B7E;
             color: #ffffff;
         }
 
